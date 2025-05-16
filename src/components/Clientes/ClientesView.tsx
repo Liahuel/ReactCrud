@@ -1,15 +1,15 @@
-import React from 'react'
 import Table from '../Generics/Table'
 import clientes from '../../mockdata/clientes.json'
 
-const cliente:[] = clientes
+const cliente:object[] = clientes
 interface data{
     columnas:string[],
-    registros:string[]
+    registros:object[]
 }
 
-const GetData=(clientes:[])=>{
-    let data:data ={
+const GetData=(clientes:object[] )=>{
+    console.log(clientes)
+    const data:data ={
         columnas:[],
         registros:[]
     }
