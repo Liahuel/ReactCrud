@@ -30,7 +30,7 @@ function Table(props:TableProps){
             </thead>
             <tbody>
                 <tr>
-                    {props.data.registros && props.data.registros.map((registro:string)=>
+                    {props.data.registros && props.data.registros.map((registro)=>
                         <td key={registro}></td>
                     )}
                 </tr>
