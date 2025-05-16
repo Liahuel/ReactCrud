@@ -9,13 +9,14 @@ interface TableProps{
     }
 }
 
-const getRows = (valores:unknown[])=>{
+const getRows = (item:object)=>{
     const rows:ReactNode[]=[]
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    valores.forEach((x:any)=>{
-        rows.push(<td>{x}</td>)
+    const claves:string[] =Object.keys(item)
+    const valores:string[]=Object.values(item)
+    for(let i=0; i< claves.length; i++){
+        rows.push(<td key={claves[i]}>{valores[i]}</td>)
+    }
 
-    })
     
     return rows
 }
@@ -44,9 +45,9 @@ function Table(props:TableProps){
           </thead>
           <tbody>
                 {props.data.registros.map(function(item:object){
-                  const valores:unknown[]=Object.values(item);
-                  const Rows:ReactNode= getRows(valores)
-                  return (<tr>{Rows}</tr>);
+                  const keydelItem= Object.values(item)[0]
+                  const Rows:ReactNode= getRows(item)
+                  return (<tr key={keydelItem}>{Rows}</tr>);
                 })} 
           </tbody>
         </table>
