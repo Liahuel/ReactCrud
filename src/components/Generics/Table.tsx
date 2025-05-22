@@ -1,7 +1,4 @@
 import type { ReactNode } from "react";
-
-
-
 interface TableProps{
     data:{
         columnas:string[],
@@ -14,7 +11,7 @@ const getRows = (item:object)=>{
     const claves:string[] =Object.keys(item)
     const valores:string[]=Object.values(item)
     for(let i=0; i< claves.length; i++){
-        rows.push(<td key={claves[i]}>{valores[i]}</td>)
+        rows.push(<td className="table-cell border-1 border-solid" key={claves[i]}>{valores[i]}</td>)
     }
 
     
@@ -23,31 +20,22 @@ const getRows = (item:object)=>{
 
 
 
-function Table(props:TableProps){
-    const {
-        data:{
-            // eslint-disable-next-line no-empty-pattern
-            columnas:[],
-            // eslint-disable-next-line no-empty-pattern
-            registros:[],
-        }
-    }=props;
-    console.log(props.data)
+const Table:React.FC<TableProps> = ({data}) => {
     return (
     <>
-        <table>
+        <table className="table-base bg-red-400  border-2 border-solid rounded-xl border-r">
           <thead>
-            <tr>
-            {props.data.columnas.map(function(item){
-                return(<th key={item}scope="col">{item}</th>)
+            <tr className="table-head border-1 border-solid">
+            {data?.columnas.map(function(item){
+                return(<th  className="table-head-cell border-1 border-solid" key={item}>{item}</th>)
             })}
             </tr>
           </thead>
           <tbody>
-                {props.data.registros.map(function(item:object){
+                {data?.registros.map(function(item:object){
                   const keydelItem= Object.values(item)[0]
                   const Rows:ReactNode= getRows(item)
-                  return (<tr key={keydelItem}>{Rows}</tr>);
+                  return (<tr className="table-row border-1 border-solid" key={keydelItem}>{Rows}</tr>);
                 })} 
           </tbody>
         </table>

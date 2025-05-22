@@ -1,4 +1,3 @@
-import './App.css';
 import ClientesView from './components/Clientes/ClientesView';
 
 function App() {
