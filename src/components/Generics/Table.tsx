@@ -27,9 +27,8 @@ const Table:React.FC<TableProps> = ({data}) => {
             <table className="rounded-md outline-solid outline-1">
             <thead>
                 <tr className="">
-                {data?.columnas.map(function(item,currentValue,AllColumns){
-                    console.log(AllColumns.length)
-                    return(<th  className=" bg-red-400 table-head-cell border-solid border-l-1 rounded" key={item}>{item}</th>)
+                {data?.columnas.map(function(item,currentValue){
+                    return(<th  className={ "bg-red-400 table-head-cell border-solid border-l-1" + (currentValue==0 ? "  rounded" :"aa")} key={item}>{item}</th>)
                 })}
                 </tr>
             </thead>
