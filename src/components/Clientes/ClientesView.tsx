@@ -1,5 +1,6 @@
 import Table from '../Generics/Table'
 import clientes from '../../mockdata/clientes.json'
+import TableTitle from '../Generics/TableTitle';
 
 const cliente:object[] = clientes
 interface data{
@@ -24,7 +25,10 @@ const GetData=(clientes:object[] )=>{
 function ClientesView(){
   return (
     <>
-     <Table data={GetData(cliente)}/>
+      <TableTitle className='align-middle' children={"Clientes"}/>
+      <div className="align-middle">
+        <Table data={GetData(cliente)}/>
+      </div>
     </>
   )
 }
